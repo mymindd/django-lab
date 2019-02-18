@@ -1,0 +1,21 @@
+{% load static %}
+<html>
+    <head>
+	    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	  <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+	 <title>Somboon blog</title>
+    </head>
+    <body>
+
+        <div class="page-header">
+            <h1><a href="/">Somboon Blog</a></h1>
+        </div>
+
+	<div class="container">
+	{% block content %}
+        {% endblock %}
+	</div>
+    </body>
+</html>

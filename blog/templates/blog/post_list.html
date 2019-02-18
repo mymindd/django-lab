@@ -1,25 +1,12 @@
-{% load static %}
-<html>
-    <head>
-	    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-	  <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-	 <title>Somboon blog</title>
-    </head>
-    <body>
-	<div class="container">
-        <div class="page-header">
-            <h1><a href="/">Somboon Blog</a></h1>
+{% extends 'blog/base.html' %}
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
+            <div class="date">
+                {{ post.published_date }}
+            </div>
+            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+            <p>{{ post.text|linebreaksbr }}</p>
         </div>
-
-	{% for post in posts %}
-    	<div>
-       		<p>published: {{ post.published_date }}</p>
-        	<h2><a href="">{{ post.title }}</a></h2>
-      		<p>{{ post.text|linebreaksbr }}</p>
-    	</div>
-	{% endfor %}
-	</div>
-    </body>
-</html>
+    {% endfor %}
+{% endblock %}
